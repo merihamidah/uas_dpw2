@@ -151,8 +151,17 @@
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">
-                   @if(Auth::check())
-                  {{ request()->user()->nama }}              
+                  @if(Auth::check())
+                  {{ request()->user()->username}}
+                @elseif(Auth::guard('pembeli')->check())
+                  {{ Auth::guard('pembeli')->user()->username }}
+                  <br>Pembeli                  
+                @elseif(Auth::guard('penjual')->check())
+                  {{ Auth::guard('penjual')->user()->username }}
+                  <br>Penjual                 
+                @elseif(Auth::guard('web')->check())
+                  {{ Auth::guard('web')->user()->username }}
+                  <br>Admin 
                 @else                 
                   Silahkan Login Kembali
                 @endif

@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ClientProdukController;
 
 
 
@@ -25,7 +26,20 @@ Route::get('/', function () {
 Route::get('template', function(){
     return view('template.base');
 });
+Route::get('templateclient', function(){
+    return view('templateclient.base');
+});
+
+Route::get('tentang', function(){
+    return view('tentang');
+});
+
+Route::get('kontak', function(){
+    return view('kontak');
+});
 Route::get('beranda', [HomeController::class, 'showBeranda']);
+Route::get('beranda/{status}', [HomeController::class, 'showBeranda']);
+Route::get('show-ajax', [HomeController::class, 'showAjax']);
 
 //authetication
 Route::get('login', [AuthController::class, 'login'])->name('login');
@@ -39,4 +53,16 @@ Route::prefix('admin')->middleware('auth')->group(function(){
     Route::post('produk/filter',[ProdukController::class, 'filter']);  
     Route::resource('produk', ProdukController::class);
     Route::resource('user', UserController::class);
+    Route::get('beranda', [HomeController::class, 'showBeranda']);
+    Route::get('beranda/{status}', [HomeController::class, 'showBeranda']);
+    Route::get('show-ajax', [HomeController::class, 'showAjax']);
+
+});
+Route::prefix('user')->group(function(){
+    Route::post('client/filter',[ClientProdukController::class, 'filter']);
+    Route::get('client', [ClientProdukController::class, 'index']);
+    Route::get('client/{produk}', [ClientProdukController::class, 'show']);
+    Route::get('client/create', [ClientProdukController::class, 'create']);
+   
+
 });

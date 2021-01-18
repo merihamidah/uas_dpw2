@@ -5,7 +5,7 @@ use App\Models\UserDetail;
 
 class UserController extends Controller{
     function index(){
-        $data['list_user'] = User::all();
+        $data['list_user'] = User::withCount('produk')->get();
         return view('user.index', $data);
     }
      function create(){
@@ -49,6 +49,18 @@ class UserController extends Controller{
         $user->handleDelete();
         $user->delete();
         return redirect('admin/user')->with('danger', 'Data berhasil dihapus');
+    }
+    
+     function filter(){
+            $nama = request('nama');
+            $username = request('username');
+            $email = request('email');
+            $data['list_user'] = User::where('nama','like', "%$nama%")->where('username', 'like', "%$username%")->where('email', 'like', "%$email%")->get();
+            $data['nama'] = $nama;
+            $data['username'] = $username;
+            $data['email'] = $email;
+
+        return view('user.index', $data);
     }
    
 }

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Models\Pembeli;
+use App\Models\Penjual;
 
 class AuthController extends Controller {
     function login(){
@@ -10,40 +12,33 @@ class AuthController extends Controller {
     } 
     function loginProcess(){
         if(Auth::attempt(['email'=> request('email'),'password'=> request('password')])){
-            return redirect('beranda')->with('success', 'Login Berhasil');
+           return redirect('admin/beranda')->with('success', 'Login Berhasil');
         }else{
-            return back()->with('danger', 'Login Gagal,silahkan cek email dan password anda');
-        }
-       
-        //menggunakan leveling
-        /*if(Auth::attempt(['email'=> request('email'),'password'=> request('password')])){
-            $user = Auth::user();
-            //if($user->level == 1) return redirect('home/admin')->with('success', 'Login Berhasil');
-           // if($user->level == 0) return redirect('home/pengguna')->with('success', 'Login Berhasil');
-            
-        }else{
-            return back()->with('danger', 'Login Gagal,silahkan cek email dan password anda');
-        }*/
+           return back()->with('danger', 'Login Gagal,silahkan cek email dan password anda');
+       }
         //menggunakan multi table auth
         //digunakan saat user memeliki tujuan atau misi yang berbeda.
         //contohnya:
         //pembeli dan penjual atau mahasiswa dan pegawai
-        /*if(request('login_as')== 1){
+       /* if(request('login_as')== 1){
             if(Auth::guard('pembeli')->attempt(['email' => request('email'), 'password' => request('password')])){
-                return redirect('home/pembeli')->with('success', 'Login Berhasil');
+                return redirect('templateclient')->with('success', 'Login Berhasil');
             }else {
                 return back()->with('danger', 'Login Gagal,silahkan cek email dan password anda');
             }
-    } else {
-         if(Auth::guard('penjual')->attempt(['email' => request('email'), 'password' => request('password')])){
-                return redirect('home/penjual')->with('success', 'Login Berhasil');
+         } else  {
+             if(Auth::guard('penjual')->attempt(['email' => request('email'), 'password' => request('password')])){
+                return redirect('beranda/penjual')->with('success', 'Login Berhasil');
             }else {
                 return back()->with('danger', 'Login Gagal,silahkan cek email dan password anda');
             }
-    }*/
-}
+        }*/
+    }
     function logout(){
         Auth::logout();
+        Auth::guard('pembeli')->logout();
+        Auth::guard('penjual')->logout();
+
         return redirect('login');
     }
      function showRegistration(){

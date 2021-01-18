@@ -47,7 +47,9 @@
                                 <th>Aksi</th>
                                 <th>Nama</th>
                                 <th>Username</th>
+                                <th>Produk</th>
                                 <th>Email</th>
+
                             </thead>
                             <tbody>
                                    @foreach($list_user as $user)
@@ -63,6 +65,7 @@
                                     </td>
                                    <td>{{ $user->nama }}</td>
                                    <td>{{ ($user->username) }} </td>
+                                   <td>{{ $user->produk_count }}</td>
                                    <td>{{ $user->email }}</td>
                                  </tr>
                                 @endforeach

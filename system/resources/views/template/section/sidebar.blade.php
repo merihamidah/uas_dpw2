@@ -11,7 +11,7 @@
       <!-- Divider -->
      <hr class="sidebar-divider my-0">
       <li class="nav-item active">
-        <a class="nav-link" href="{{ url('beranda') }}" > 
+        <a class="nav-link" href="{{ url('/admin/beranda') }}" > 
           <i class="fas fa-fw fa-home"></i>
           <span>Beranda</span></a>
       </li>
@@ -21,7 +21,7 @@
           <span>Produk</span></a>
       </li>     
       <li class="nav-item active">
-        <a class="nav-link" href="{{ url('/test-ajax') }}">
+        <a class="nav-link" href="{{ url('/show-ajax') }}">
           <i class="fas fa-address-card"></i>
           <span>Alamat Pengiriman</span></a>
       </li>  

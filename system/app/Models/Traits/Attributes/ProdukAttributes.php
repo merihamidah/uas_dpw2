@@ -12,6 +12,18 @@ trait ProdukAttributes{
         return strftime("%d %b %Y", strtotime($this->created_at));
     }*/
     function handleUploadFoto(){
+     
+        if(request()->hasFile('foto')){
+            $foto = request()->file('foto');
+            $destination = "images/produk";
+            $randomstr = Str::random(5);
+            $filename = $this->id."-".time()."-".$randomstr.".".$foto->extension();
+            $url = $foto->storeAs($destination, $filename);
+            $this->foto ="app/".$url;
+            $this->save();
+        }
+    }
+    function handleUpdatefoto(){
       
         if(request()->hasFile('foto')){
             $foto = request()->file('foto');

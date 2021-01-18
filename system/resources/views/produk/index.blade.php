@@ -1,3 +1,4 @@
+@inject('timeService' , 'App\Services\TimeServices')
 @extends('template.base')
 @section('content')
      <div class="container">
@@ -6,6 +7,8 @@
                     <div class="card">
                     <div class="card-header">
                         <div class="float-right">
+                              Jam : {{ $timeService->showTimeNow() }}
+
                         </div>                      
                         Filter
                     </div>
@@ -56,7 +59,7 @@
                                 <th>Stok</th>
                             </thead>
                             <tbody>
-                                   @foreach($list_produk as $produk)
+                                   @foreach($list_produk->sortBy('nama') as $produk)
                                 <tr>
                                    <td>{{ $loop->iteration }}</td>
                                     <td>
@@ -64,7 +67,6 @@
                                             <a href="{{ url('admin/produk', $produk->id) }}" class="btn btn-dark"><i class="fa fa-info"></i></a>
                                             <a href="{{ url('admin/produk', $produk->id) }}/edit" class="btn btn-warning"><i class="fa fa-edit"></i></a>  
                                               @include('template.utils.delete', ['url' => url('admin/produk', $produk->id)])                             
-                                    
                                         </div>
                                     </td>
                                    <td>{{ $produk->nama }}</td>
