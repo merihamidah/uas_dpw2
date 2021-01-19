@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 use App\Models\Produk;
 
+
 class ProdukController extends Controller{
     function index(){
         $user = request()->user();

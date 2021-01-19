@@ -158,10 +158,7 @@
                   <br>Pembeli                  
                 @elseif(Auth::guard('penjual')->check())
                   {{ Auth::guard('penjual')->user()->username }}
-                  <br>Penjual                 
-                @elseif(Auth::guard('web')->check())
-                  {{ Auth::guard('web')->user()->username }}
-                  <br>Admin 
+                  <br>Penjual
                 @else                 
                   Silahkan Login Kembali
                 @endif

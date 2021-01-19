@@ -12,10 +12,14 @@ class AuthController extends Controller {
     } 
     function loginProcess(){
         if(Auth::attempt(['email'=> request('email'),'password'=> request('password')])){
-           return redirect('admin/beranda')->with('success', 'Login Berhasil');
+            $user = Auth::user();
+        if($user->level == 1) return redirect('beranda/admin')->with('success', 'Login Berhasil');
+        if($user->level == 2) return redirect('beranda/penjual')->with('success', 'Login Berhasil');
+        if($user->level == 3) return redirect('templateclient')->with('success', 'Login Berhasil');
+            
         }else{
-           return back()->with('danger', 'Login Gagal,silahkan cek email dan password anda');
-       }
+            return back()->with('danger', 'Login Gagal,silahkan cek email dan password anda');
+        }
         //menggunakan multi table auth
         //digunakan saat user memeliki tujuan atau misi yang berbeda.
         //contohnya:

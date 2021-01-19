@@ -19,12 +19,7 @@
         <a class="nav-link" href="{{ url('/admin/produk') }}">
           <i class="fas fa-fw fa-shopping-cart"></i>
           <span>Produk</span></a>
-      </li>     
-      <li class="nav-item active">
-        <a class="nav-link" href="{{ url('/show-ajax') }}">
-          <i class="fas fa-address-card"></i>
-          <span>Alamat Pengiriman</span></a>
-      </li>  
+      </li>   
        <li class="nav-item active">
         <a class="nav-link" href="{{ url('/admin/user') }}">
           <i class="fas fa-fw fa-bars"></i>
@@ -43,7 +38,6 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Pages</h6>
             <a class="collapse-item" href="{{ url('login') }}">Login</a>
-            <a class="collapse-item" href="{{ url('register') }}">Register</a>
             <a class="collapse-item" href="{{ url('user/client') }}">Halaman Client</a>
           </div>
         </div>

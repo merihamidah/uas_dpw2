@@ -1,4 +1,4 @@
-@extends('templateclient.base3')
+@extends('templateclient.base2')
 @section('content')
     <div class="container">
         <div class="row">
@@ -25,8 +25,7 @@
                        {!! nl2br($produk->deskripsi) !!}
                      </p>
                      <br>
-                       <a href="{{ url("user/client/create") }}" class="btn btn-primary float-right"><i class="fa fa-plus"> Keranjang </i></a>
-   
+                       <a href="{{ url('keranjang') }}" class="btn btn-primary float-right"><i class="fa fa-plus"> Keranjang </i></a>
                     </div>
                 </div>
             </div>

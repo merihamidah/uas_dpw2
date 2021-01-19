@@ -58,7 +58,7 @@
                                 <img src="{{ url('public', $produk->foto) }}" alt="" class="img-fluid">
                                   </div>
                             <div class="card-body">
-                                <a href="{{ url('user/client', $produk->id) }}"  > {{ $produk->nama }}</a>
+                                <a href="{{ url('user/client', $produk->id) }}"> {{ $produk->nama }}</a>
                                  <br>
                                 Rp. {{ number_format($produk->harga) }} | stok : {{ $produk->stok }}
                             </div>

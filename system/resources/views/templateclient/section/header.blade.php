@@ -18,24 +18,22 @@
                                 <div class="right_header_info">
                                     <ul>
                                         <li>
-                                             @if(Auth::check())
-                                            {{ request()->user()->nama }}
-                                            @elseif(Auth::guard('pembeli')->check())
-                                            {{ Auth::guard('pembeli')->user()->nama }}
-                                       
-                                            @elseif(Auth::guard('penjual')->check())
-                                            {{ Auth::guard('penjual')->user()->nama }}
-                                            
-                                            @else                 
-                                            Silahkan Login Kembali
-                                            @endif
+                                              @if(Auth::check())
+                                                {{ request()->user()->nama }}
+                                                @elseif(Auth::guard('pembeli')->check())
+                                                {{ Auth::guard('pembeli')->user()->nama }}
+                                                <br>Pembeli                  
+                                                @elseif(Auth::guard('penjual')->check())
+                                                {{ Auth::guard('penjual')->user()->nama }}
+                                                <br>Penjual 
+                                                @else                 
+                                                Silahkan Login Kembali
+                                                @endif
                                              <a href="{{ url('login') }}" >
                                             <img style="margin-right: 15px;" src="{{ url('public') }}/client/icon/1.png" alt="#" />
                                             </a>
                                         </li>
-                                        <li class="tytyu">
-                                            <a href="#"><img style="margin-right: 15px;" src="{{ url('public') }}/client/icon/2.png" alt="#" /></a>
-                                        </li>
+                                        
                                         <li>
                                             <a href="{{ url('keranjang') }}"><img style="margin-right: 15px;" src="{{ url('public') }}/client/icon/3.png" alt="#" /></a>
                                         </li>

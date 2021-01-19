@@ -10,12 +10,14 @@ class ClientProdukController extends Controller{
         $data['list_produk'] = $user->produk=Produk::paginate(9);
         return view('client.index', $data);  
     }    
-     function create(){
-        return view('client.create');
-    }
     function show(Produk $produk){
          $data['produk'] = $produk;
         return view('client.show', $data);
+    }
+    
+    function showAlamat(){
+        $data['list_provinsi'] = Provinsi::all();
+        return view('alamat', $data);
     }
   
     function filter(){
@@ -29,9 +31,7 @@ class ClientProdukController extends Controller{
 
         return view('client.index', $data);
     }
-    /*
-    
-            */
+  
 
 
 }

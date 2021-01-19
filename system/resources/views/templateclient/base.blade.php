@@ -55,6 +55,7 @@
                 <li class="active"> <a href="{{ url('templateclient') }}">Beranda</a></li>
                 <li> <a href="{{ url('tentang') }}">Tentang</a></li>
                 <li> <a href="{{ url('user/client') }}">Produk</a></li>
+                <li> <a href="{{ url('sclient-ajax') }}">Alamat Pengiriman</a></li>
                 <li> <a href="{{ url('kontak') }}">Kontak</a></li>
 
             </ul>

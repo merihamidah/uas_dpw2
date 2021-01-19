@@ -30,13 +30,9 @@ Route::get('templateclient', function(){
     return view('templateclient.base');
 });
 
-Route::get('tentang', function(){
-    return view('tentang');
-});
-
-Route::get('kontak', function(){
-    return view('kontak');
-});
+Route::get('tentang', [HomeController::class, 'showTentang']);
+Route::get('kontak', [HomeController::class, 'showKontak']);
+Route::get('beranda', [HomeController::class, 'showBeranda']);
 Route::get('beranda', [HomeController::class, 'showBeranda']);
 Route::get('beranda/{status}', [HomeController::class, 'showBeranda']);
 Route::get('show-ajax', [HomeController::class, 'showAjax']);
@@ -62,7 +58,7 @@ Route::prefix('user')->group(function(){
     Route::post('client/filter',[ClientProdukController::class, 'filter']);
     Route::get('client', [ClientProdukController::class, 'index']);
     Route::get('client/{produk}', [ClientProdukController::class, 'show']);
-    Route::get('client/create', [ClientProdukController::class, 'create']);
-   
+    Route::get('alamat', [ClientController::class, 'showAlamat']);
+
 
 });
